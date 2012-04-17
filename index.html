@@ -1,0 +1,117 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Photos</title>
+	<link href="css/style.css" type="text/css" rel="stylesheet" />
+	<!--[if IE]>
+	<style type="text/css">
+		.bg {
+			background: none;
+		}
+		.bg img {
+			display: block;
+			filter: progid:DXImageTransform.Microsoft.Blur(pixelradius=12.0,makeshadow='false');
+		}
+	</style>
+	<![endif]-->
+	<script src="js/lib/jquery.min.js"></script>
+	<script src="js/jq.ext.js"></script>
+	<script src="js/lib/blur.min.js"></script>
+</head>
+<body>
+	<div class="viewport">
+		<div class="viewport-body">
+			
+			<script id="temp-photo-item" type="html/templete">
+			<div class="photo-card">
+				<div class="inner">
+					<div class="img"><img alt="" /></div>
+					<div class="photo-info clearfix">
+						<span class="name">Photo Name</span>
+						<a href="#" class="likes"><i class="ico">喜欢</i><i class="num">0</i></a>
+						<a href="#" class="comments"><i class="ico">评论</i><i class="num">0</i></a>
+					</div>
+				</div>
+			</div>
+			</script>
+			
+		</div>
+	</div>
+
+	
+	<div class="nav-past"></div>
+	<div class="nav-next"></div>
+
+	<div class="pagenum">
+		<ol></ol>
+	</div>
+
+	<div id="loader" class="loader"></div>
+	<div class="bg"><img src="photos/bg.jpg" alt="" /></div>
+
+	<div class="preload">
+		<img src="images/pic-loader.gif" alt="">
+	</div>
+
+<script src="js/photo.js"></script>
+<script>
+var PHOTO_TEMP = $('#temp-photo-item').html();
+
+var photoWall = new PhotoWall();
+	
+
+	(function(win){
+
+		var timer,
+			fun = function(){ photoWall.resize(); };
+
+		$(win).on('resize', function(){
+			clearTimeout(timer);
+			timer = setTimeout(fun, 30);
+		});
+
+	})(window);
+
+	$(document).on('keydown', function(event){
+		if ( event && event.keyCode ) {
+			switch (event.keyCode) {
+				case 37:
+					photoWall.past();
+					break;
+
+				case 39:
+					photoWall.next();
+					break;
+			}
+		}
+	});
+
+	$.ajax({
+	
+		url: 'data.json',
+		
+		dataType: 'json',
+
+		success: function(json){
+			photoWall.addData( json );
+		},
+		
+		complete: function(){
+			$('#loader').hide()
+		},
+
+		error: function(){
+			// TODO
+		}
+	});
+
+	$('.bg').blurjs({
+		radius: 10,
+		source: '.bg'
+	});
+
+// console.dir(photoWall);
+</script>
+</body>
+</html>

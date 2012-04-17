@@ -1,0 +1,265 @@
+html, body, ol, ul, li {
+	margin: 0;
+	padding: 0;
+}
+
+ul, li {
+	list-style: none;
+}
+
+html, body {
+	font: 12px/1.5 Helvetica,Verdana,sans-serif;
+	overflow: hidden;
+}
+
+a {
+	text-decoration: none;
+}
+
+.likes .ico, .comments .ico,
+.nav-past, .nav-next,
+.pagenum ol li {
+	background: url(../icons/icons.png) no-repeat;
+}
+
+.bg {
+	background: #FFF url(../photos/bg.jpg) repeat;
+	background-size: 100%;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+}
+.bg img {
+	display: none;
+	width: 120%;
+	position: absolute;
+	left: -10%;
+	top: -10%;
+}
+
+.loader {
+	background: #333 url(../images/loader.gif) no-repeat center center;
+	border-radius: 8px;
+	width: 50px;
+	height: 50px;
+	position: fixed;
+	left: 50%;
+	top: 50%;
+	margin: -25px 0 0 -25px;
+	z-index: 10;
+}
+
+.viewport {
+	position: absolute;
+	top: 50px;
+	left: 16px;
+	right: 16px;
+	bottom: 50px;
+	overflow: hidden;
+	z-index: 4;
+}
+
+.viewport-body {
+	height: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
+	transition: left .4s ease-in;
+	-webkit-transition: left .4s ease-in;
+	-moz-transition: left .4s ease-in;
+	-o-transition: left .4s ease-in;
+}
+
+.pagenum {
+	height: 50px;
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	z-index: 5;
+}
+
+.pagenum ol {
+	height: 13px;
+	line-height: 13px;
+	position: absolute;
+	left: 50%;
+	top: 18px;
+}
+.pagenum ol li {
+	background-position: -51px -65px;
+	cursor: pointer;
+	float: left;
+	width: 13px;
+	height: 13px;
+	margin-right: 3px;
+	text-indent: -999px;
+	overflow: hidden;
+}
+.pagenum ol li:hover {
+	background-position: -51px -78px;
+}
+.pagenum ol li.selected {
+	background-position: -51px -91px;
+}
+
+.photo-card {
+	background-color: #FFF;
+	margin-right: 10px;
+	position: absolute;
+}
+
+.photo-card .inner {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	bottom: 10px;
+	left: 10px;
+}
+
+.photo-card .img {
+	background: #eee url(../images/pic-loader.gif) no-repeat center center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 26px;
+	left: 0;
+	overflow: hidden;
+}
+
+.photo-card .img img {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+}
+
+.photo-info {
+	padding-top: 5px;
+	height: 21px;
+	line-height: 21px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+}
+
+.name {
+	float: left;
+}
+
+.likes, .comments {
+	color: #666;
+	height: 21px;
+	line-height: 21px;
+	float: right;
+	margin-left: 10px;
+	outline: none;
+}
+
+.likes .ico, .comments .ico {
+	float: left;
+	margin-right: 5px;
+	height: 21px;
+	width: 21px;
+	text-indent: -999px;
+	overflow: hidden;
+	vertical-align: middle;
+
+	transition: background .2s linear;
+	-webkit-transition: background .2s linear;
+	-moz-transition: background .2s linear;
+	-o-transition: background .2s linear;
+}
+
+.likes .ico {
+	background-position: -1px -65px;
+}
+
+.likes:hover .ico {
+	background-position: -1px -95px;
+}
+
+.likes:active .ico {
+	background-position: -1px -125px;
+}
+
+.likes.selected .ico {
+	background-position: -1px -155px;
+}
+
+.comments .ico {
+	background-position: -25px -65px;
+}
+
+.comments:hover .ico {
+	background-position: -25px -95px;
+}
+
+.comments:active .ico {
+	background-position: -25px -125px;
+}
+
+.comments.selected .ico {
+	background-position: -25px -155px;
+}
+
+.likes.loading .ico, .comments.loading .ico {
+
+}
+
+.nav-past,
+.nav-next {
+	cursor: pointer;
+	height: 52px;
+	width: 52px;
+	position: fixed;
+	top: 50%;
+	margin-top: -26px;
+	z-index: 5;
+	opacity: .7;
+	transition: opacity .2s linear;
+	-webkit-transition: opacity .2s linear;
+	-moz-transition: opacity .2s linear;
+	-o-transition: opacity .2s linear;
+}
+
+.nav-past:hover,
+.nav-next:hover {
+	opacity: 1;
+}
+
+.nav-past.disable,
+.nav-next.disable {
+	opacity: .3!important;
+}
+
+.nav-past {
+	background-position: 0 0;
+	left: 0;
+}
+
+.nav-next {
+	background-position: -52px 0;
+	right: 0;
+}
+
+.preload {
+	position: absolute;
+	left: -9999px;
+	top: -9999px;
+}
+
+.clearfix {
+	zoom: 1;
+}
+.clearfix:after {
+	content: "";
+	display: table;
+	clear: both;
+}
